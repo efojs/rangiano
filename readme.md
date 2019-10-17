@@ -3,7 +3,7 @@ Arduino based instrument for playing melodies by changing distance
 
 ## Used components
 Images and links to components can be found at my DESCR!BE post: [www.descr.be/posts/35](https://www.descr.be/posts/35)
-1. Arduino UNO
+1. Arduino UNO Rev3
 2. Seeedstudio Grove ultrasonic ranger v2.0
 3. Seeedstudio Grove speaker v1.1
 
@@ -16,7 +16,7 @@ Connect sensor and speaker to pins `12` and `3` accordingly (or set yours in `ra
 In `melody.h`:  
 - Set melody following this pattern:
 ```
-[ N_ + note + number of octave ] ==> N_C4 == piano middle C
+[ note + number of octave + _N ] ==> C4_N == piano middle C
 ```
 
 In `rangiano.ino`:
@@ -37,7 +37,7 @@ In `rangiano.ino`:
 ## How it works
 Melody is set as an array of notes in `melody.h`. Notes are defined by respective frequencies in `notes_frequencies.h`  
 ```
-const float notes[] = { N_C4, N_D4, N_E4, N_F4, N_G4, N_A4, N_B4, N_C5 };
+const float notes[] = { C4_N, D4_N, E4_N, F4_N, G4_N, A4_N, B4_N, C5_N };
 ```
 
 **Our goal is to play melody note by note**  
@@ -66,14 +66,16 @@ noteStep =  25
 int index = (170 - 124)/25 ==> 1.84 ==> 1  // not rounding
 
 --  
-notes:   | C | D | E | F |
-               |____
-                   |               
+        near      cm    far
+         |         |     |
 steps:   | 3 | 2 | 1 | 0 |
+                ___|
+               |               
+notes:   | C | D | E | F |
 ```
 
 Then pass `index` to player method, either:  
-- one using built-in `tone()` method, or
+- one using builtin `tone()` method, or
 - one generating sound.
 
 ## Known issues
