@@ -1,8 +1,10 @@
 // RANGIANO (range piano)
-// Plays notes by distance
+// Plays notes by changing distance
 // Check readme.md for details
 
+
 #include "melody.h"
+
 
 // PINS
 const int sensor = 12;  // Distance Sensor
@@ -40,7 +42,7 @@ int currentFreq = 0;
  #define GOAWAY false   // set true to play by moving away from sensor
 
 // METHOD OF PLAYING
-// by default uses built-in tome() method: smooth, but with caveats (read method)
+// by default uses builtin tome() method: smooth, but with caveats (read method)
  #define GENERATE false  // set true to play by digitalWrite() and delay(): with pause, but more realiable
 
 
@@ -93,9 +95,9 @@ void loop() {
 
     // To play choose either of methods (uncomment)
     if (GENERATE) {
-      generateSound(index); // generates sound with pulse (pause) for pinging
+      generateSound(index); // generates sound
     } else {
-      useTone(index); // uses built in tone(), without pulse, but with caveats (read method)
+      useTone(index); // uses builtin tone()
     }
 
   } else {
@@ -134,7 +136,7 @@ void useTone(uint8_t noteIndex)
 {
     // Play by tone()
     // eliminates sound pulsation needed for ping,
-    // but interferes the signal of distance sensor on large ranges
+    // but may interfere the signal of distance sensor
 
     int freq = (int)notes[noteIndex];
 
