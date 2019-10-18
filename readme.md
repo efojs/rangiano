@@ -6,18 +6,18 @@ Arduino based instrument for playing melodies by changing distance
 2. Seeedstudio Grove ultrasonic ranger v2.0
 3. Seeedstudio Grove speaker v1.1
 
-Check wiring scheme with links to components at [Descr!be](https://www.descr.be/posts/36/?utm_source=gthb&utm_medium=or&utm_campaign=awabys&utm_content=poli&utm_term=them):  
+![rangiano wiring](img/rangiano-wiring-described.jpg)   
 
-![rangiano wiring](img/rangiano-wiring-described.jpg)  
+*Check this [wiring scheme with links to components](https://www.descr.be/posts/37/?utm_source=gthb&utm_medium=or&utm_campaign=awabys&utm_content=poli&utm_term=them) and [actual photo of assembled project](https://www.descr.be/posts/36/?utm_source=gthb&utm_medium=or&utm_campaign=awabys&utm_content=poli&utm_term=them) at DESCR!BE*  
 
 ## Usage
-Clone project:
-`git clone https://github.com/efojs/rangiano.git` or copy code from to your project
+- Clone project:
+`git clone https://github.com/efojs/rangiano.git` or copy code to your sketch
 
-Connect sensor and speaker to pins `12` and `3` accordingly (or set yours in `rangiano.ino`)
+- Connect sensor and speaker to pins `12` and `3` accordingly (or set yours in `rangiano.ino`)
 
 In `melody.h`:  
-- Set melody following this pattern:
+- Choose or write melody following this pattern:
 ```
 [ note + number of octave + _N ] ==> C4_N == piano middle C
 ```
@@ -89,7 +89,7 @@ Then pass `index` to player method, either:
 - not yet sure if it's possible to use `generateSound()` method without pause for measure
 
 ## Contribute
-Will be great if you add features or fix something (e.g. this readme) by making pull request or just raise an issue.
+Will be great if you add features or fix something (e.g. this readme) by making a pull request or raising an issue.
 
 
 ## Disclaimer
@@ -98,8 +98,8 @@ Be careful working with electricity.
 Code provided as is and no warranty applied — so be careful and check everything before usage — I can not be responsible for any damage caused by your usage of this code.
 
 ## Licence
-Project is based on one from Arduino: https://www.arduino.cc/en/Tutorial/Ping  
-So check their licence.  
+Some code or concepts used from these Arduino tutorial:
+- [Ping Ultrasonic Range Finder](https://www.arduino.cc/en/Tutorial/Ping) — thanks to David A. Mellis and Tom Igoe;
+- [Play a Melody using the tone() function](https://www.arduino.cc/en/Tutorial/ToneMelody) — thanks to Tom Igoe.
 
-Feel free to use my part of code, or parts of it.  
-If you will use it commercially — remember melodies may be copyrighted.
+Rangiano is released under the MIT License.
