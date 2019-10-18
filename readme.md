@@ -2,12 +2,15 @@
 Arduino based instrument for playing melodies by changing distance
 
 ## Used components
-Images and links to components can be found at my DESCR!BE post: [www.descr.be/posts/35](https://www.descr.be/posts/35)
 1. Arduino UNO Rev3
 2. Seeedstudio Grove ultrasonic ranger v2.0
 3. Seeedstudio Grove speaker v1.1
 
-## Usage and settings
+Check wiring scheme with links to components at [Descr!be](https://www.descr.be/posts/36/?utm_source=gthb&utm_medium=or&utm_campaign=awabys&utm_content=poli&utm_term=them):  
+
+![rangiano wiring](img/rangiano-wiring-described.jpg)  
+
+## Usage
 Clone project:
 `git clone https://github.com/efojs/rangiano.git` or copy code from to your project
 
