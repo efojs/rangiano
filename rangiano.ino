@@ -14,9 +14,9 @@ const int speaker = 3; // Speaker
 // WORKING RANGE of our instrument, where it will play melody
 // Set it small to play with hand
 // Set it large to play by walking
-#define MAXDIST 50 // cm
-#define MINDIST 5  // cm
-const int range = MAXDIST - MINDIST;
+#define FAR 50 // cm
+#define NEAR 5  // cm
+const int range = FAR - NEAR;
 
 
 // MELODY
@@ -81,16 +81,16 @@ void loop() {
   cm = microsecondsToCentimeters(duration);
   Serial.println(cm);
 
-  if (cm > MINDIST && cm < MAXDIST - 1) {
+  if (cm > NEAR && cm < FAR - 1) {
     // to calculate note index in melody array
     // we need to find distance from the "zero" of range
 
     // find note index depending on direction of playing
     int index = 0;
     if (GOAWAY){
-      index = (cm - MINDIST) / noteStep;  // play starting from lowest distance
+      index = (cm - NEAR) / noteStep;  // play starting from lowest distance
     } else {
-      index = (MAXDIST - cm) / noteStep;    // play starting from far end of the range
+      index = (FAR - cm) / noteStep;    // play starting from far end of the range
     }
 
     // To play choose either of methods (uncomment)

@@ -25,7 +25,7 @@ In `melody.h`:
 In `rangiano.ino`:
 - Set working range in centimetres:
 ```
-#define MAXDIST 40
+#define FAR 40
 #define MINDIST 5  
 ```
 - Set direction of playing (default: played by approaching sensor):
@@ -38,42 +38,45 @@ In `rangiano.ino`:
 ```
 
 ## How it works
-Melody is set as an array of notes in `melody.h`. Notes are defined by respective frequencies in `notes_frequencies.h`  
+**Our goal is to play melody note by note:**  
+- Melody is set as an array of notes in `melody.h`
+Notes are defined by respective frequencies in `notes_frequencies.h`  
 ```
 const float notes[] = { C4_N, D4_N, E4_N, F4_N, G4_N, A4_N, B4_N, C5_N };
 ```
+- Every note in array has its own index (from 0 to N)
+- We will divide working range into subranges by number of notes in melody — steps
+- Then play note corresponding to the index of step of current location
 
-**Our goal is to play melody note by note**  
-Every note in array has its own index  
-**=> We will divide working range into steps by number of notes in melody**  
-Then play note corresponding to the index of current step  
-
+### Technically
 Ranger measures distance from 3 to 350 cm ==> `cm`    
 Then we check if it is in the working range.
 ```
                |<-------- working range -------->|
                |                                 |
   |____________|=================================|___________|
-  |         MINDIST         |                 MAXDIST        |
+  |           NEAR          |                   FAR          |
   |                         |                                |
   3 cm                      cm                              350 cm
 ```
 If `cm` is in range, we find index of current step (depending on direction of playing).  
 By default we play by approaching sensor.  
-So divide distance from `MAXDIST` to `cm` by `noteStep`.
+So divide distance from `FAR` to `cm` by `noteStep`, e.g.:
 ```
 cm =       124
-MAXDIST =  170
+FAR =  170
 noteStep =  25
 
 int index = (170 - 124)/25 ==> 1.84 ==> 1  // not rounding
 
 --  
-        near      cm    far
+                  cm    
+        NEAR       |    FAR
          |         |     |
 steps:   | 3 | 2 | 1 | 0 |
-                ___|
-               |               
+                  /
+                 /
+                /               
 notes:   | C | D | E | F |
 ```
 
