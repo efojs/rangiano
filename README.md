@@ -11,14 +11,16 @@ Demo video:
 
 [![rangiano wiring](img/rangiano-wiring-described.jpg)](https://www.descr.be/posts/37/?utm_source=gthb&utm_medium=or&utm_campaign=awabys&utm_content=poli&utm_term=them)   
 
-*[Wiring scheme with links to components](https://www.descr.be/posts/37/?utm_source=gthb&utm_medium=or&utm_campaign=awabys&utm_content=poli&utm_term=them) and [actual photo of assembled project](https://www.descr.be/posts/36/?utm_source=gthb&utm_medium=or&utm_campaign=awabys&utm_content=poli&utm_term=them) at DESCRiBE*  
+*[Wiring scheme with links to components](https://www.descr.be/posts/37/?utm_source=gthb&utm_medium=or&utm_campaign=awabys&utm_content=poli&utm_term=them) and [assembled project](https://www.descr.be/posts/36/?utm_source=gthb&utm_medium=or&utm_campaign=awabys&utm_content=poli&utm_term=them) at DESCRiBE*  
 
 ## Usage
+### Works out of the box
 - Clone project:
 `git clone https://github.com/efojs/rangiano.git` or copy code to your sketch
 
 - Connect sensor and speaker to pins `12` and `3` accordingly (or set yours in `rangiano.ino`)
 
+### To customize
 In `melody.h`:  
 - Choose or write melody following this pattern:
 ```
