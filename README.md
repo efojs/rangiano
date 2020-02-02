@@ -45,12 +45,12 @@ In `rangiano.ino`:
 ## How it works
 **Our goal is to play melody note by note:**  
 - Melody is set as an array of notes in `melody.h`
-Notes are defined by respective frequencies in `notes_frequencies.h`  
+Notes are defined by respective frequencies in `notes_frequencies.h`:  
 ```
 const float notes[] = { C4_N, D4_N, E4_N, F4_N, G4_N, A4_N, B4_N, C5_N };
 ```
-- Every note in array has its own index (from 0 to N)
-- We will divide working range into subranges by number of notes in melody — steps
+- Note in melody is accessed by its index in array (from 0 to N),  
+- We divide working range into steps — subranges by number of notes in melody,  
 - Then play note corresponding to the index of step of current location
 
 ### Technically
@@ -64,12 +64,11 @@ Then we check if it is in the working range.
   |                         |                                |
   3 cm                      cm                              350 cm
 ```
-If `cm` is in range, we find index of current step (depending on direction of playing).  
-By default we play by approaching sensor.  
-So divide distance from `FAR` to `cm` by `noteStep`, e.g.:
+If object is in range, we find index of current step (depending on direction of playing).   
+By default we play by approaching sensor. So divide distance from `FAR` to `cm` by `noteStep`, e.g.:  
 ```
-cm =       124
-FAR =  170
+cm =        124
+FAR =       170
 noteStep =  25
 
 int index = (170 - 124)/25 ==> 1.84 ==> 1  // not rounding
